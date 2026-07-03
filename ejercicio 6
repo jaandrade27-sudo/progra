@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+
+using namespace std;
+
+int main() {
+    int numLineas;
+    cout << "Ingrese el numero de lineas a escribir: ";
+    cin >> numLineas;
+    cin.ignore();
+
+    char lineas[20][200] = {""};
+    int totales[26] = {0};
+    int* ptr_totales = totales;
+
+    for (int i = 0; i < numLineas; i++) {
+        cout << "Linea " << i + 1 << ": ";
+        cin.getline(*(lineas + i), 200); 
+    }
+
+    for (int i = 0; i < numLineas; i++) {
+        char* ptr_caracter = *(lineas + i); 
+        while (*ptr_caracter != '\0') {
+            char car = tolower(*ptr_caracter);
+            if (car >= 'a' && car <= 'z') {
+                *(ptr_totales + (car - 'a')) += 1;
+            }
+            ptr_caracter++; 
+        }
+    }
+
+    cout << "\n--- Reporte Tabular de Frecuencias ---\n";
+    cout << "Letra\tTotal" << endl;
+    cout << "-------------" << endl;
+    for (int k = 0; k < 26; k++) {
+        cout << (char)('a' + k) << "\t" << *(ptr_totales + k) << endl;
+    }
+    return 0;
+}

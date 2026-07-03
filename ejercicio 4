@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de numeros flotantes a sumar: ";
+    cin >> n;
+    cin.ignore();
+
+    char cadena[50];
+    char* ptr_cadena = cadena; 
+    double sumaTotal = 0.0;
+
+    for (int i = 0; i < n; i++) {
+        cout << "Ingrese el valor flotante [" << i + 1 << "]: ";
+        cin.getline(ptr_cadena, 50);
+        double valor = atof(ptr_cadena);
+        sumaTotal += valor;
+    }
+
+    cout << "La suma total de los valores flotantes es: " << sumaTotal << endl;
+    return 0;
+}

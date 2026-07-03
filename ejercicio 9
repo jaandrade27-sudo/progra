@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int main() {
+    int numLineas;
+    cout << "Ingrese el numero de lineas a procesar: ";
+    cin >> numLineas;
+    cin.ignore();
+
+    char lineas[20][200];
+    for (int i = 0; i < numLineas; i++) {
+        cout << "Linea " << i + 1 << ": ";
+        cin.getline(*(lineas + i), 200);
+    }
+
+    char cadenaBuscar[50];
+    char* ptr_buscar = cadenaBuscar;
+    cout << "Ingrese la subcadena de busqueda: ";
+    cin.getline(ptr_buscar, 50);
+
+    cout << "\n--- Resultados de Busqueda ---\n";
+    for (int i = 0; i < numLineas; i++) {
+        cout << "Evaluando Linea " << i + 1 << "...\n";
+        char* buscar_Ptr = strstr(*(lineas + i), ptr_buscar);
+        int ocurrencia = 1;
+
+        while (buscar_Ptr != NULL) {
+            cout << "  Ocurrencia " << ocurrencia << ": " << buscar_Ptr << endl;
+            buscar_Ptr = strstr(buscar_Ptr + 1, ptr_buscar);
+            ocurrencia++;
+        }
+        if (ocurrencia == 1) {
+            cout << "  (No se encontraron ocurrencias en esta linea)\n";
+        }
+    }
+    return 0;
+}

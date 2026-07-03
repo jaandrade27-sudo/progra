@@ -7,17 +7,18 @@ int main() {
     int n;
     cout << "Ingrese el numero de cadenas: ";
     cin >> n;
-    cin.ignore(); 
+    cin.ignore();
 
     char cadena[100];
+    char* ptr_cadena = cadena; 
     cout << "Ingrese las " << n << " cadenas:\n";
 
     for (int i = 0; i < n; i++) {
         cout << "[" << i + 1 << "]: ";
-        cin.getline(cadena, 100);
+        cin.getline(ptr_cadena, 100);
 
-        if (cadena[0] == 'b' || cadena[0] == 'B') {
-            cout << "-> Comienza con 'b': " << cadena << endl;
+        if (*ptr_cadena == 'b' || *ptr_cadena == 'B') {
+            cout << "-> Comienza con 'b': " << ptr_cadena << endl;
         }
     }
 

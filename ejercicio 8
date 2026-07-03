@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+void compararConStrcmp(const char* cad1, const char* cad2) {
+    int res = strcmp(cad1, cad2);
+    cout << "[strcmp] La cadena 1 es ";
+    if (res < 0) cout << "MENOR que";
+    else if (res > 0) cout << "MAYOR que";
+    else cout << "IGUAL a";
+    cout << " la cadena 2.\n";
+}
+
+void compararConStrncmp(const char* cad1, const char* cad2, int n) {
+    int res = strncmp(cad1, cad2, n);
+    cout << "[strncmp para " << n << " caracteres] La cadena 1 es ";
+    if (res < 0) cout << "MENOR que";
+    else if (res > 0) cout << "MAYOR que";
+    else cout << "IGUAL a";
+    cout << " la cadena 2.\n";
+}
+
+int main() {
+    char cadena1[100], cadena2[100];
+    char* ptr1 = cadena1; // Puntero a la cadena 1
+    char* ptr2 = cadena2; // Puntero a la cadena 2
+    int caracteresAComparar;
+
+    cout << "Ingrese la primera cadena: ";
+    cin.getline(ptr1, 100);
+    cout << "Ingrese la segunda cadena: ";
+    cin.getline(ptr2, 100);
+    cout << "Ingrese el numero de caracteres a evaluar: ";
+    cin >> caracteresAComparar;
+
+    compararConStrcmp(ptr1, ptr2);
+    compararConStrncmp(ptr1, ptr2, caracteresAComparar);
+    return 0;
+}

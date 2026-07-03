@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de lineas de texto: ";
+    cin >> n;
+    cin.ignore();
+
+    char lineas[25][200];
+    for (int i = 0; i < n; i++) {
+        cout << "Linea [" << i + 1 << "]: ";
+        cin.getline(*(lineas + i), 200);
+    }
+
+    char carBusqueda;
+    cout << "Ingrese el caracter que desea buscar: ";
+    cin >> carBusqueda;
+
+    int totalCoincidencias = 0;
+    for (int i = 0; i < n; i++) {
+        char* ptr = strchr(*(lineas + i), carBusqueda);
+        while (ptr != NULL) {
+            totalCoincidencias++;
+            ptr = strchr(ptr + 1, carBusqueda); 
+        }
+    }
+
+    cout << "El caracter '" << carBusqueda << "' aparece " << totalCoincidencias << " veces en total." << endl;
+    return 0;
+}

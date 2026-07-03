@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    srand(time(0));
+
+    const char* articulo[] = {"El", "Un", "Ese", "Ningun", "Cierto"};
+    const char* sustantivo[] = {"programador", "gato", "estudiante", "dron", "cientifico"};
+    const char* verbo[] = {"compila", "salta", "analiza", "vuela", "estudia"};
+    const char* preposicion[] = {"sobre", "con", "hacia", "desde", "en"};
+    const char* lugar[] = {"el laboratorio", "la universidad", "la nube", "el campo", "la ciudad"};
+
+    cout << "--- QUINTILLA JOCOSA ALEATORIA GENERADA ---\n";
+    for (int i = 0; i < 5; i++) {
+        int a = rand() % 5;
+        int s = rand() % 5;
+        int v = rand() % 5;
+        int p = rand() % 5;
+        int l = rand() % 5;
+        
+        cout << *(articulo + a) << " "
+              << *(sustantivo + s) << " "
+              << *(verbo + v) << " "
+              << *(preposicion + p) << " "
+              << *(lugar + l) << "." << endl;
+    }
+    cout << "-----------------------------------------\n";
+    return 0;
+}

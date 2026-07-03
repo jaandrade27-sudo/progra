@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de numeros a sumar: ";
+    cin >> n;
+    cin.ignore();
+
+    char cadena[50];
+    char* ptr_cadena = cadena; 
+    int sumaTotal = 0;
+
+    for (int i = 0; i < n; i++) {
+        cout << "Ingrese el entero numerico [" << i + 1 << "]: ";
+        cin.getline(ptr_cadena, 50);
+        int valor = atoi(ptr_cadena);
+        sumaTotal += valor;
+    }
+
+    cout << "La suma total de los valores enteros es: " << sumaTotal << endl;
+    return 0;
+}

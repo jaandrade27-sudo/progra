@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    char TEXTO[500];
+    int frecuencia[26] = {0};
+    int* ptr_frecuencia = frecuencia; 
+    int totalLetras = 0;
+
+    cout << "Ingrese la cadena de TEXTO: ";
+    cin.getline(TEXTO, 500);
+
+    char* ptr_texto = TEXTO; 
+    while (*ptr_texto != '\0') {
+        if (isalpha(*ptr_texto)) {
+            char c = tolower(*ptr_texto);
+            if (c >= 'a' && c <= 'z') {
+                *(ptr_frecuencia + (c - 'a')) += 1;
+                totalLetras++;
+            }
+        }
+        ptr_texto++; 
+    }
+
+    cout << "\nTexto analizado: " << TEXTO << "\n\n";
+    cout << left << setw(10) << "Letra" << setw(15) << "Frec. Absoluta" << "Frec. Relativa" << endl;
+    cout << "----------------------------------------------" << endl;
+
+    for (int i = 0; i < 26; i++) {
+        char letra = 'a' + i;
+        double frecRel = (totalLetras > 0) ? (double)*(ptr_frecuencia + i) / totalLetras : 0.0;
+        cout << left << setw(10) << letra
+             << setw(15) << *(ptr_frecuencia + i)
+             << fixed << setprecision(4) << frecRel << endl;
+    }
+    return 0;
+}

@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese el numero de cadenas: ";
+    cin >> n;
+    cin.ignore();
+
+    char cadena[100];
+    cout << "Ingrese las " << n << " cadenas:\n";
+    
+    for (int i = 0; i < n; i++) {
+        cout << "[" << i + 1 << "]: ";
+        cin.getline(cadena, 100);
+        
+        int longi = strlen(cadena);
+        if (longi >= 2) {
+            char* ptr_antepenultimo = cadena + (longi - 2);
+            char* ptr_ultimo = cadena + (longi - 1);
+
+            if ((*ptr_antepenultimo == 'o' || (unsigned char)*ptr_antepenultimo == 162 || (unsigned char)*ptr_antepenultimo == 143) && *ptr_ultimo == 'n') {
+                cout << "-> Termina en 'on'/'on': " << cadena << endl;
+            }
+        }
+    }
+    return 0;
+}
